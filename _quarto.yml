@@ -2,12 +2,18 @@ project:
   type: book
 
 book:
-  title: "book"
-  author: "Norah Jones"
+  title: "From Code to Commerce: PyTorch Deep Dive into AI, Mathematics, and Business Tactics"
+  author: "Ivan Jacobs"
   date: "25/12/2023"
+
   chapters:
     - index.qmd
     - intro.qmd
+    - part: trading/aitrading_introduction.qmd
+      chapters:
+        - trading/trading_intro.qmd
+        - trading/dppa.qmd
+        - trading/Data Collection.qmd
     - summary.qmd
     - references.qmd
 
@@ -16,8 +22,25 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    highlight-style: dracula
+    code-copy: false
+    code-annotations: select
+    code-tools:
+      source: false
+      toggle: true
+      caption: none
   pdf:
     documentclass: scrreprt
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex
 
 editor: visual
 

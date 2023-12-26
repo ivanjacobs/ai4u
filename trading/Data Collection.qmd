@@ -1,0 +1,481 @@
+# Data Collection
+
+## Python Virtual Environment
+
+A virtual environment in Python is a self-contained directory that encapsulates a specific Python interpreter along with its own set of libraries and dependencies. It allows you to create isolated environments for different Python projects, each with its own set of packages, without interfering with the system-wide Python installation.
+
+Here are some key concepts related to virtual environments in Python:
+
+1.  **Isolation:**
+    -   A virtual environment provides a segregated space where you can install Python packages without affecting the global Python environment. This isolation is crucial when working on multiple projects that might require different versions of libraries or have conflicting dependencies.
+2.  **Package Management:**
+    -   With a virtual environment, you can install, upgrade, and remove Python packages using tools like `pip` without affecting the rest of your system. This ensures that each project has its own set of dependencies.
+3.  **Version Control:**
+    -   Virtual environments help manage Python interpreter versions. You can create a virtual environment with a specific version of Python, ensuring consistency across different projects. This is particularly useful when transitioning between Python 2 and Python 3 or when working with different Python versions for compatibility reasons.
+4.  **Dependency Management:**
+    -   Virtual environments allow you to specify and manage dependencies for each project. You can create a `requirements.txt` file listing all the dependencies and their versions, making it easy for others to recreate the same environment.
+5.  **Activation and Deactivation:**
+    -   Activating a virtual environment modifies the system's `PATH` variable to prioritize the virtual environment's binaries. This means that when you run Python or use `pip`, it refers to the versions within the virtual environment. Once your work in the virtual environment is done, you can deactivate it to return to the global Python environment.
+6.  **Cleaner Project Directories:**
+    -   Virtual environments keep project directories clean by isolating project-specific dependencies. This makes it easier to share projects with others and avoids conflicts with system-wide packages.
+7.  **Compatibility:**
+    -   Virtual environments are compatible across operating systems. You can create a virtual environment on one machine, and someone else can recreate the same environment on a different machine by using the same configuration files (e.g., `requirements.txt`).
+8.  **Built-in Modules:**
+    -   Python comes with a built-in module called `venv` (since Python 3.3) for creating virtual environments. Additionally, popular third-party tools like `virtualenv` and `conda` can also be used to create virtual environments.
+
+To summarize, virtual environments in Python are a valuable tool for managing project-specific dependencies, ensuring version consistency, and maintaining a clean and organized development environment. They contribute to better project portability, reproducibility, and efficient collaboration among developers.
+
+Creating Anaconda environments and virtual environments in Python can be a straightforward process. Below are the steps for both Windows and Linux:
+
+### Creating an Anaconda Environment:
+
+#### For Windows:
+
+1.  **Download and Install Anaconda:**
+
+    -   Download the Anaconda distribution for Windows from the [official Anaconda website](https://www.anaconda.com/products/distribution).
+    -   Run the installer and follow the installation instructions.
+
+2.  **Open Anaconda Navigator:**
+
+    -   Once installed, open the Anaconda Navigator.
+
+3.  **Create a New Environment:**
+
+    -   Click on the "Environments" tab.
+    -   Click the "Create" button.
+    -   Enter a name for your new environment, select Python version, and choose the packages you need.
+    -   Click "Create" to create the environment.
+
+4.  **Activate the Environment:**
+
+    -   To activate the environment, open the "Home" tab.
+    -   From the Applications on the left, select "Home" and then choose your environment from the drop-down list.
+    -   Click on "Home" again, and you should see your environment name in the right pane.
+    -   Click "Install" to install packages in the selected environment.
+
+5.  To create a new environment using Conda, you can use the `conda create` command. Below are the basic steps:
+
+    ### Create a new Conda environment:
+
+    1.  **Open a terminal or command prompt:**
+
+        -   On Windows, you can use the Anaconda Prompt or any command prompt.
+        -   On Linux or macOS, you can use a terminal.
+
+    2.  **Run the following command:**
+
+        ``` bash
+        conda create --name your_environment_name python=3.x
+        ```
+
+        Replace `your_environment_name` with the desired name for your new environment, and `3.x` with the desired Python version (e.g., `3.8`).
+
+        For example, to create an environment named "myenv" with Python 3.8, you would run:
+
+        ``` bash
+        conda create --name myenv python=3.8
+        ```
+
+    3.  **Activate the new environment:**
+
+        -   On Windows:
+
+            ``` bash
+            conda activate your_environment_name
+            ```
+
+        -   On Linux or macOS:
+
+            ``` bash
+            source activate your_environment_name
+            ```
+
+            Replace `your_environment_name` with the name you provided earlier.
+
+        After activation, your command prompt or terminal should indicate that you are now working in the new environment.
+
+    4.  **Install additional packages (optional):**
+
+        -   You can install additional packages in your new environment using `conda install` or `pip install` as needed. For example:
+
+            ``` bash
+            conda install numpy pandas
+            ```
+
+    5.  **Deactivate the environment (when done):**
+
+        -   When you're finished working in the environment, you can deactivate it using the following command:
+
+            ``` bash
+            conda deactivate
+            ```
+
+            This will return you to the base (root) environment.
+
+    ### Note:
+
+    -   It's a good practice to include the Python version when creating a new environment to ensure compatibility.
+    -   You can customize the environment further by installing specific versions of packages or specifying additional packages during the creation process.
+    -   Remember to activate the environment whenever you want to work within it, and deactivate it when you're finished.
+
+    By following these steps, you can create and manage Conda environments for your Python projects.
+
+#### For Linux:
+
+1.  **Download and Install Anaconda:**
+    -   Download the Anaconda distribution for Linux from the [official Anaconda website](https://www.anaconda.com/products/distribution).
+    -   Open a terminal in the directory where the installer was downloaded.
+    -   Run the following command to install Anaconda: `bash Anaconda3-<version>-Linux-x86_64.sh`
+    -   Follow the on-screen instructions to complete the installation.
+2.  **Open Anaconda Navigator:**
+    -   Once installed, open a terminal and run `anaconda-navigator`.
+3.  **Create a New Environment:**
+    -   In Anaconda Navigator, go to the "Environments" tab.
+    -   Click the "Create" button.
+    -   Enter a name for your new environment, select Python version, and choose the packages you need.
+    -   Click "Create" to create the environment.
+4.  **Activate the Environment:**
+    -   To activate the environment, open a terminal and run: `conda activate your_environment_name`
+    -   Replace `your_environment_name` with the actual name of your environment.
+
+### Creating a Virtual Environment:
+
+#### For Windows:
+
+1.  **Open a Command Prompt:**
+    -   Open the command prompt.
+2.  **Install `virtualenv`:**
+    -   Run the following command to install `virtualenv`: `pip install virtualenv`
+3.  **Create a Virtual Environment:**
+    -   Navigate to the directory where you want to create the virtual environment.
+    -   Run the following command: `python -m venv your_virtual_environment`
+    -   Replace `your_virtual_environment` with the desired name for your virtual environment.
+4.  **Activate the Virtual Environment:**
+    -   Navigate to the virtual environment's directory.
+    -   Run: `.\your_virtual_environment\Scripts\activate`
+    -   You should see the virtual environment name in the command prompt.
+
+#### For Linux:
+
+1.  **Open a Terminal:**
+    -   Open a terminal.
+2.  **Install `virtualenv`:**
+    -   Run the following command to install `virtualenv`: `pip install virtualenv`
+3.  **Create a Virtual Environment:**
+    -   Navigate to the directory where you want to create the virtual environment.
+    -   Run the following command: `python -m venv your_virtual_environment`
+    -   Replace `your_virtual_environment` with the desired name for your virtual environment.
+4.  **Activate the Virtual Environment:**
+    -   Navigate to the virtual environment's directory.
+    -   Run: `source your_virtual_environment/bin/activate`
+    -   You should see the virtual environment name in the terminal.
+
+These steps should help you create Anaconda environments and virtual environments on both Windows and Linux systems. Adjust the environment names and versions as needed.
+
+So lets create and activate an anaconda environment for our project.
+
+``` bash
+
+conda create --name dppa -y
+conda activate dppa
+```
+
+::: callout-note
+The given Bash command @bash_conda_create is a Conda command used to create a new Conda environment. Let's break down the components of the command:
+
+-   `conda create`: This part of the command instructs Conda to create a new environment.
+
+-   `--name dppa`: This option specifies the name of the new environment. In this case, the environment is named "dppa." You can replace "dppa" with any desired name for your environment.
+
+-   `-y`: This option stands for "yes" and is used to automatically confirm and proceed with the installation without prompting the user for confirmation. Adding `-y` is useful, especially when you want to automate environment creation in scripts or ensure a smooth, non-interactive installation.
+
+Putting it all together, the command `conda create --name dppa -y` creates a new Conda environment named "dppa" without asking for user confirmation during the process. This environment can later be activated and used for specific Python projects, allowing for isolation and management of dependencies.
+:::
+
+## Data Collection
+
+We are going to use **`yfinance`** to fetch historical data. **`yfinance`** is a Python library that provides a simple and convenient way to access financial data from Yahoo Finance. Yahoo Finance is a popular platform that offers a wide range of financial information, including historical stock prices, current market data, company information, and more. Here are the main functionalities and features of the **`yfinance`** library:
+
+1.  **Historical Data Retrieval:**
+
+    -   **`yfinance`** allows users to download historical stock price data for a specific ticker symbol over a specified time period. This data includes daily Open, High, Low, Close prices, and trading volume.
+
+2.  **Current Market Data:**
+
+    -   Users can retrieve real-time market data, including the latest stock price, bid and ask prices, trading volume, and more.
+
+3.  **Dividend and Split Information:**
+
+    -   The library provides access to information about dividends and stock splits for a given ticker symbol.
+
+4.  **Financial Statements and Company Information:**
+
+    -   **`yfinance`** enables users to fetch financial statements, such as income statements, balance sheets, and cash flow statements. It also provides general information about a company, including its name, sector, and industry.
+
+5.  **Option and Warrant Data:**
+
+    -   Users can obtain option and warrant data, including details on options chains and expiration dates.
+
+6.  **Support for Multiple Ticker Symbols:**
+
+    -   The library supports the retrieval of data for multiple ticker symbols in a single call, allowing for efficient data retrieval for a portfolio of stocks.
+
+7.  **Customizable Date Ranges:**
+
+    -   Users can specify custom start and end dates to retrieve historical data for a specific time period.
+
+```{python}
+#| label: fig-plot
+#| fig-cap: "Plot Volatility, Volume, and Performance"
+
+import yfinance as yf
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def fetch_stock_data(ticker, start_date, end_date):
+    """
+    Fetch historical stock data for a given ticker symbol.
+
+    Parameters:
+    - ticker: Stock ticker symbol (e.g., AAPL for Apple Inc.).
+    - start_date: Start date for historical data in 'YYYY-MM-DD' format.
+    - end_date: End date for historical data in 'YYYY-MM-DD' format.
+
+    Returns:
+    - A DataFrame containing historical stock data.
+    """
+    stock_data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+    return stock_data
+
+def calculate_metrics(historical_data):
+    """
+    Calculate Volatility, Volume, and Performance metrics.
+
+    Parameters:
+    - historical_data: DataFrame containing historical stock data.
+
+    Returns:
+    - DataFrame with added columns for Volatility, Volume, and Performance.
+    """
+    # Calculate Volatility
+    historical_data['Volatility'] = historical_data['Close'].pct_change().rolling(window=252).std() * (252**0.5)
+    
+    # Calculate Volume
+    historical_data['Volume'] = historical_data['Volume'].rolling(window=252).mean()
+    
+    # Calculate Performance
+    historical_data['Performance'] = historical_data['Close'].pct_change() * 100
+
+    return historical_data
+
+def plot_metrics(historical_data):
+    """
+    Plot Volatility, Volume, and Performance using seaborn.
+
+    Parameters:
+    - historical_data: DataFrame containing historical stock data with added metrics.
+    """
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(8, 8))
+
+    # Plot Volatility
+    plt.subplot(3, 1, 1)
+    sns.lineplot(data=historical_data['Volatility'], color='blue')
+    plt.title('Volatility')
+
+    # Plot Volume
+    plt.subplot(3, 1, 2)
+    sns.lineplot(data=historical_data['Volume'], color='orange')
+    plt.title('Volume')
+
+    # Plot Performance
+    plt.subplot(3, 1, 3)
+    sns.lineplot(data=historical_data['Performance'], color='green')
+    plt.title('Performance')
+
+    plt.tight_layout()
+    plt.show()
+
+# Example usage:
+ticker_symbol = "AAPL"  # Replace with the desired stock symbol
+start_date = "2021-01-01"
+end_date = "2023-12-12"
+
+historical_data = fetch_stock_data(ticker_symbol, start_date, end_date)
+historical_data_with_metrics = calculate_metrics(historical_data)
+plot_metrics(historical_data_with_metrics)
+
+```
+
+This code provides a visual representation of how these financial indicators change over time as shown in @fig-plot. Volatility is shown in blue, Volume in orange, and Performance in green. The `rolling` function is used to calculate these metrics over a specified window, providing a smoothed representation of their trends. The resulting plot helps in understanding the historical behavior of these indicators for the given stock. In the example, the `yfinance` library is used to fetch historical stock data. You can install it using the command `pip install yfinance`. Adjust the `ticker_symbol`, `start_date`, and `end_date` variables according to your requirements.
+
+Please note that using this approach, you can gather basic historical price data. For more extensive financial data and external factors that may influence stock performance, you may need to integrate other data sources or APIs into your code.
+
+1.  **Calculate Volatility:**
+
+    -   Volatility is often measured as the standard deviation of the daily returns. In finance, it's a common metric used to assess the variability of a stock's price. The formula for calculating volatility is: $\text{Volatility} = \sqrt{\frac{\sum_{i=1}^{N}(R_i - \bar{R})^2}{N}}$ where $R_i$ is the daily return, $\bar{R}$ is the mean of daily returns, and $N$ is the number of days (in this case, the rolling window of 252 days).
+
+    -   Code for calculating volatility:
+
+        ``` python
+        historical_data['Volatility'] = historical_data['Close'].rolling(window=252).std() 
+        ```
+
+2.  **Calculate Volume:**
+
+    -   Volume is often used as a measure of market activity. It represents the total number of shares traded in a day. In this case, the rolling mean over a window of 252 days is calculated to smooth out short-term fluctuations. The formula is straightforward: $\text{Volume} = \frac{\sum_{i=1}^{N}\text{Volume}_i}{N}$
+
+    -   Code for calculating volume:
+
+        ``` python
+        historical_data['Volume'] = historical_data['Volume'].rolling(window=252).mean()
+        ```
+
+3.  **Calculate Performance:**
+
+    -   Performance is typically measured as the percentage change in the closing price from one day to the next. This helps assess the daily returns of the stock. The formula is: $$\text{Performance}_i = \frac{\text{Close}_{i} - \text{Close}_{i-1}}{\text{Close}_{i-1}}\times 100$$ This represents the percentage change in the closing price from day (i-1) to day (i).
+
+    -   Code for calculating performance:
+
+        ``` python
+        historical_data['Performance'] = historical_data['Close'].pct_change()
+        ```
+
+4.  **Plotting:**
+
+    -   Finally, the three indicators - Volatility, Volume, and Performance - are plotted using `matplotlib`. The different colors and labels are added to differentiate between the lines in the plot.
+
+        ``` python
+            sns.set(style="whitegrid")
+            plt.figure(figsize=(12, 8))
+
+            # Plot Volatility
+            plt.subplot(3, 1, 1) # <1>
+            sns.lineplot(data=historical_data['Volatility'], color='blue') # <1>
+            plt.title('Volatility') # <1>
+
+            # Plot Volume
+            plt.subplot(3, 1, 2)  # <2>
+            sns.lineplot(data=historical_data['Volume'], color='orange') # <2>
+            plt.title('Volume')
+
+            # Plot Performance
+            plt.subplot(3, 1, 3) # <3>
+            sns.lineplot(data=historical_data['Performance'], color='green')# <3>
+            plt.title('Performance')# <3>
+
+            plt.tight_layout()
+            plt.show()
+        ```
+
+### Data Reprocessing
+
+Data preprocessing is a crucial step in preparing financial data for use in a trading algorithm. The goal is to clean, transform, and structure the data to make it suitable for analysis and modeling. Below are common steps involved in data preprocessing for a trading algorithm using `yfinance` data:
+
+### 1. **Data Retrieval:**
+
+-   Use `yfinance` to download historical stock price data for the desired ticker symbols and time period.
+
+    ``` python
+    import yfinance as yf
+
+    # Example: Fetch historical data for AAPL
+    historical_data = yf.download("AAPL", start="2022-01-01", end="2023-01-01", progress=False)
+    ```
+
+### 2. **Handling Missing Data:**
+
+-   Check for missing values in the dataset.
+
+-   Decide on a strategy to handle missing data, such as interpolation, forward-fill, or backward-fill.
+
+    ``` python
+    # Check for missing values
+    missing_values = historical_data.isnull().sum()
+
+    # Handle missing values (for example, forward-fill)
+    historical_data = historical_data.ffill()
+    ```
+
+### 3. **Feature Engineering:**
+
+-   Create new features that might be useful for modeling, such as moving averages, technical indicators, or other relevant financial metrics.
+
+    ``` python
+    # Example: Calculate 10-day simple moving average
+    historical_data['SMA_10'] = historical_data['Close'].rolling(window=10).mean()
+    ```
+
+### 4. **Normalization/Scaling:**
+
+-   Normalize or scale numerical features to a common range, especially if using machine learning models sensitive to scale.
+
+    ``` python
+    from sklearn.preprocessing import MinMaxScaler
+
+    # Example: Normalize closing prices
+    scaler = MinMaxScaler()
+    historical_data['Close_Normalized'] = scaler.fit_transform(historical_data['Close'].values.reshape(-1, 1))
+    ```
+
+### 5. **Removing Outliers:**
+
+-   Identify and handle outliers that might adversely affect model performance.
+
+    ``` python
+    # Example: Remove outliers using z-score
+    from scipy.stats import zscore
+
+    z_scores = zscore(historical_data['Close'])
+    historical_data = historical_data[(z_scores < 3) & (z_scores > -3)]
+    ```
+
+### 6. **Time Resampling:**
+
+-   Adjust the frequency of the data (e.g., daily to weekly) if needed.
+
+    ``` python
+    # Example: Resample data to weekly frequency
+    weekly_data = historical_data.resample('D').last()
+    ```
+
+### 7. **Labeling:**
+
+-   For supervised learning, create labels or target variables based on future price movements.
+
+    ``` python
+    # Example: Create binary labels for price increase (1) or decrease (0)
+    historical_data['Price_Increase'] = (historical_data['Close'].shift(-1) > historical_data['Close']).astype(int)
+    ```
+
+### 8. **Splitting Data:**
+
+-   Split the data into training and testing sets.
+
+    ``` python
+    # Example: Split data into 80% training and 20% testing
+    train_size = int(len(historical_data) * 0.8)
+    train_data, test_data = historical_data[:train_size], historical_data[train_size:]
+    ```
+
+### 9. **Handling Categorical Data:**
+
+-   If there are categorical variables, encode or transform them into a numerical format.
+
+    ``` python
+    # Example: One-hot encode categorical column 'Category'
+    historical_data = pd.get_dummies(historical_data, columns=['Category'])
+    ```
+
+### 10. **Save Processed Data:**
+
+-   Save the preprocessed data for future use to avoid repeating these steps.
+
+    ``` python
+    # Example: Save preprocessed data to a CSV file
+    historical_data.to_csv('preprocessed_data.csv', index=False)
+    ```
+
+These steps provide a foundation for preparing financial data for trading algorithms. The specific preprocessing steps may vary based on the requirements of your trading strategy and the type of model you intend to use.
